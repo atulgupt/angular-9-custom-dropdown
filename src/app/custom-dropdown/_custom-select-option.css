@@ -1,0 +1,48 @@
+:host {
+  display: block;
+  padding: 0 0.875rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  color: #333;
+  background-color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  user-select: none;
+  cursor: pointer;
+}
+:host.selected {
+  color: #0079cc;
+  background-color: #eee;
+  font-weight: bold;
+}
+:host.selected:hover, :host.selected.active {
+  background-color: #eee;
+}
+@media screen and (-ms-high-contrast: active) {
+  :host.selected:hover, :host.selected.active {
+    background-color: #eee;
+ }
+}
+:host:hover, :host.active {
+  outline: none;
+  background-color: #eee;
+}
+@media screen and (-ms-high-contrast: active) {
+  :host:hover, :host.active {
+    background-color: #eee;
+ }
+}
+:host.disabled {
+  color: #93a1aa;
+  cursor: auto;
+}
+:host.disabled:hover, :host.disabled:focus {
+  outline: none;
+  background-color: #fff;
+}
+@media screen and (-ms-high-contrast: active) {
+  :host.disabled:hover, :host.disabled:focus {
+    background-color: #fff;
+ }
+}

@@ -1,0 +1,23 @@
+<h1>Custom Dropdown Demo for ngModel and Reactive Form</h1>
+<div class="row">
+  <div class="col-md-6">
+    <custom-select [required]="true" label="Destination" placeholder="Pick Your Holiday Destination" [(ngModel)]="selectedDestination" #model="ngModel">
+      <custom-select-option *ngFor="let item of list; trackBy:trackObject" key="{{item.id}}" value="{{item.name}}"></custom-select-option>
+    </custom-select>
+    <div *ngIf="model.invalid && (model.dirty || model.touched)" style="color: red">
+      <div *ngIf="model.errors.required">
+        Destintation is required.
+      </div>
+    </div>
+    {{selectedDestination | json}}
+  </div>
+  <div class="col-md-6" [formGroup]="myForm">
+    <custom-select [required]="true" label="Destination 2" placeholder="Pick Your Holiday Destination 2" formControlName="country">
+      <custom-select-option *ngFor="let item of list; trackBy:trackObject" key="{{item['id']}}" value="{{item.name}}"></custom-select-option>
+    </custom-select>
+    <div *ngIf="myForm.get('country').invalid && (myForm.get('country').dirty || myForm.get('country').touched)">
+      Please select country.
+    </div>
+    {{myForm.value | json}}
+  </div>
+</div>
