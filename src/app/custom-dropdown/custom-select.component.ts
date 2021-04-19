@@ -70,7 +70,7 @@ export class CustomSelectComponent implements AfterViewInit, ControlValueAccesso
     this.dropdownService.register(this);
     this.renderer.listen('window', 'click', (e: Event) => {
       /**
-       * Only run when toggleButton is not clicked
+       * Only run when toggle input tag is not clicked
        * If we don't check this, all clicks (even on the toggle button) gets into this
        * section which in the result we might never see the menu open!
        * And the menu itself is checked here, and it's where we check just outside of
@@ -96,8 +96,6 @@ export class CustomSelectComponent implements AfterViewInit, ControlValueAccesso
 
   public showDropdown() {
     this.dropdown.showing ? this.hideDropdown() : this.dropdown.show();
-    //
-
     if (!this.options.length) {
       return;
     }
@@ -147,7 +145,6 @@ export class CustomSelectComponent implements AfterViewInit, ControlValueAccesso
   }
 
   public selectOption(option: CustomSelectOptionComponent) {
-    console.log(option, '<===option');
     this.keyManager.setActiveItem(option);
     this.selected = option.key;
     this.selectedOption = option;
@@ -176,13 +173,6 @@ export class CustomSelectComponent implements AfterViewInit, ControlValueAccesso
   public onTouched(event: UIEvent) {
     event.stopPropagation();
     this.onTouchedFn();
-    console.log(this.dropdownService.getSelect(), '<=== service');
-    console.log(this.selectedOption, '<=== option component');
-    // setTimeout(() => {
-    //   if (this.dropdown.show && !this.selectedOption) {
-    //     this.dropdown.hide();
-    //   }
-    // }, 100);
   }
 
   public onChange() {
